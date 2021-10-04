@@ -9,16 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>agecalculator</title>
     </head>
     <body>
         <h1>Age Calculator</h1><br>
         <form method="POST" action="age">
             <label>Enter your age: </label>
-            <input type="number" name="how_old" min="0" value=""><br>
-            <input type="submit" value="Age next birthday"><br>
-            <span name="error messages"></span>
-                
+            <input type="text" name="how_old" value="${Age}"><br>
+            <input type="submit" value="Age next birthday">  
         </form>
+        <p>${message}</p>
     </body>
 </html>

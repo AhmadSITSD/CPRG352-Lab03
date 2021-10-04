@@ -19,7 +19,7 @@ public class AgeCalculatorServlet extends HttpServlet {
             throws ServletException, IOException {
         // load up a JSP
         getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request,response);
-        
+        return;
     }
 
     @Override
@@ -27,9 +27,27 @@ public class AgeCalculatorServlet extends HttpServlet {
             throws ServletException, IOException {
         
         // capture the params from POST request
-        int age = Integer.parseInt(request.getParameter("how_old"));
+        String age = request.getParameter("how_old");
+        
+         if (age == null || age.equals("")) {
+            request.setAttribute("message", "You must give your current age");
+            getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);
+            return;
+            
+        } else if(age.contains("[A-Z,a-z]+$")){
+            request.setAttribute("message2", "You must enter a number");
+            getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);
+            return;
+        }
+         
+        // Set attributes in the request object.
+        // request object will be passed through to JSP by forward() method
+        request.setAttribute("Age", age);
+       
         
         
+        getServletContext().getRequestDispatcher("/WEB-INF/agecalculator.jsp").forward(request, response);
+        return;
         
     }
 
