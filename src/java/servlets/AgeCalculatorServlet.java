@@ -27,7 +27,9 @@ public class AgeCalculatorServlet extends HttpServlet {
             throws ServletException, IOException {
         
         // capture the params from POST request
-        String age = request.getParameter("how_old");
+        int age = Integer.parseInt(request.getParameter("how_old"));
+        
+        
         
     }
 
